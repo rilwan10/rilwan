@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown timer</title>
+</head>
+<body>  
+  <img src="./iphone 12.jpg" alt="iphone 12" width="400px" >
+      <style>
+        body {
+          font-family: 'Arial', sans-serif;
+          text-align: center;
+          margin: 50px;
+          background-size: cover;
+          background-color: grey;
+        }
+    
+        #countdown {
+          font-size: 2em;
+          color: white;
+          display: flex;
+          text-align: center;
+          justify-content: center
+        }
+        #countdown-Timer span {
+          font-size: 2em;
+          color:white;
+          display: inline-block;
+          margin: 0.5rem;
+          width: 70px;
+          padding: 1rem;
+          border: 15px solid white;
+
+        }
+      </style>
+    <body>
+      <h1>OLD IPHONE 12 GIVEAWAY</h1>
+      <H2>This Giveaway ends on march 28th, 2024</H2>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat quod similique doloremque impedit provident alias, repellendus autem ullam consequuntur mollitia eaque tenetur sequi architecto quas accusantium dignissimos doloribus possimus magnam obcaecati. Autem officiis rem iure fugiat atque libero odio temporibus commodi deleniti ut sit nihil excepturi, nobis praesentium quidem quos repellat saepe reprehenderit earum distinctio quaerat! Veritatis inventore esse ipsa placeat tempora cupiditate enim, laboriosam, adipisci odio ducimus cum magnam!
+      <br><br><br><br><br><br>
+
+      <table id="countdown">
+        <tr id="countdown-Timer">
+          <td><span id="days">00</span></td>
+          <td><span id="hours">00</span></td>
+          <td><span id="minutes">00</span></td>
+          <td><span id="seconds">00</span></td>
+        </tr>
+        <tr id="contdown-Labels">
+          <td><span>days</span></td>
+          <td><span>hours</span></td>
+          <td><span>minutes</span></td>
+          <td><span>seconds</span></td>
+        </tr>
+
+      </table>
+    
+    <script>
+
+      const  storeOpening = new Date('march 28, 2024 00:00:00');
+
+      setCountdown(storeOpening); //calls setCountdown only once
+
+      //call setCountdown every second:
+      setInterval(function() {
+        setCountdown(storeOpening); 
+      },1000);
+
+      
+
+      function setCountdown(countingdownTime) {
+
+        let now = new Date();
+
+        let timerRemaining =  countingdownTime - now;  
+        
+        console.log(timerRemaining); // time remaing for countdown that is left in milliseconds
+
+        // now to convert this to time remaining in regular units
+        
+        //days
+        let days = Math.floor(timerRemaining / (1000*60*60*24));
+
+        //hours
+        let hours = Math.floor(timerRemaining / (1000*60*60));
+
+        //minutes
+        let minutes = Math.floor(timerRemaining / (1000*60));
+
+        // seconds
+        let seconds = Math.floor(timerRemaining / 1000);
+        
+        console.log(days, hours, minutes, seconds); // absolute time left in each unit(like seconds,minutes etc.)
+
+        //now for u to get the exact units of time, day, hour and seconds, you subract the bigger units from the smaller units
+
+        let daystoDisplay = days;
+
+        //subtract 24 hours for every day remaining from the hour count
+        let hourstoDisplay =  hours - (days * 24);
+        //sutract 60 minutes for every hour from the minute count
+        let minutestoDisplay = minutes - (hours * 60);
+        //subtract 60 seconds for every minute remaining from the seconds count
+        let secondstoDisplay = seconds - (minutes * 60);
+
+        console.log(daystoDisplay, hourstoDisplay, minutestoDisplay, secondstoDisplay);
+        //countdown now in displayable format
+
+        //print to DOM
+        const daysEl = document.getElementById('days')
+        const hoursEl = document.getElementById('hours');
+        const minutesEL = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        daysEl.textContent = daystoDisplay;
+        hoursEl.textContent = hourstoDisplay;
+        minutesEL.textContent = minutestoDisplay;
+        secondsEl.textContent = secondstoDisplay;
+      }
+    </script>
+    
+    </body>
+    </html>
+    
+</body>
+</html>
